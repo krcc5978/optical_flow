@@ -44,7 +44,7 @@ def main(video_path, model='lucas', show=False, output_dir_path=None):
         old_gray = frame_gray.copy()
 
         if show:
-            cv2.imshow('test', img)
+            cv2.imshow('optical flow image', img)
             cv2.waitKey(1)
 
         if output_dir_path:
