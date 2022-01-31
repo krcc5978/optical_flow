@@ -50,7 +50,7 @@ def main(video_path, model='lucas'):
         if args.output_dir_path:
             os.makedirs(args.output_dir_path, exist_ok=True)
             cv2.imwrite(f'{args.output_dir_path}/{str(count).zfill(16)}.jpg', img)
-            count = count+1
+            count = count + 1
 
     cv2.destroyAllWindows()
     cap.release()
