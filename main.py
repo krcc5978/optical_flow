@@ -13,7 +13,7 @@ parser.add_argument('--output_dir_path', help='出力画像の保存ディレク
 args = parser.parse_args()
 
 
-def main(video_path, model='lucas'):
+def main(video_path, model='lucas', show=False, output_dir_path=None):
     cap = cv2.VideoCapture(video_path)
     ret, old_frame = cap.read()
     old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
@@ -43,13 +43,13 @@ def main(video_path, model='lucas'):
 
         old_gray = frame_gray.copy()
 
-        if args.show:
+        if show:
             cv2.imshow('test', img)
             cv2.waitKey(1)
 
-        if args.output_dir_path:
-            os.makedirs(args.output_dir_path, exist_ok=True)
-            cv2.imwrite(f'{args.output_dir_path}/{str(count).zfill(16)}.jpg', img)
+        if output_dir_path:
+            os.makedirs(output_dir_path, exist_ok=True)
+            cv2.imwrite(f'{output_dir_path}/{str(count).zfill(16)}.jpg', img)
             count = count + 1
 
     cv2.destroyAllWindows()
@@ -57,4 +57,4 @@ def main(video_path, model='lucas'):
 
 
 if __name__ == '__main__':
-    main(args.movie_path, args.model)
+    main(args.movie_path, args.model, args.show, args.output_dir_path)
